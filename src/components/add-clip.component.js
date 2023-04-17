@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import ClipsDataService from "../services/clip.service";
+import { AuthContext } from "../ContextApi/AuthContext";
 
 export default class AddClip extends Component {
+  static contextType = AuthContext;
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -12,6 +14,7 @@ export default class AddClip extends Component {
     this.state = {
       title: "",
       description: "",
+      user: "",
       published: false,
 
       submitted: false,
@@ -30,10 +33,16 @@ export default class AddClip extends Component {
     });
   }
 
+  componentDidMount() {
+    const { name } = this.context;
+    this.setState({ user: name });
+  }
+
   saveClip() {
     let data = {
       title: this.state.title,
       description: this.state.description,
+      user: this.state.user,
       published: false
     };
 
@@ -53,6 +62,7 @@ export default class AddClip extends Component {
     this.setState({
       title: "",
       description: "",
+      user: "",
       published: false,
 
       submitted: false,
@@ -60,6 +70,7 @@ export default class AddClip extends Component {
   }
 
   render() {
+    const { name } = this.context;
     return (
       <div className="submit-form">
         {this.state.submitted ? (
@@ -96,7 +107,7 @@ export default class AddClip extends Component {
                 name="description"
               />
             </div>
-
+            <p>Logged in as {name}</p>
             <button onClick={this.saveClip} className="btn btn-success">
               Submit
             </button>
