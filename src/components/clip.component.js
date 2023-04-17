@@ -16,6 +16,7 @@ export default class Clip extends Component {
         title: "",
         description: "",
         published: false,
+        user: "",
       },
       message: "",
     };
@@ -137,10 +138,12 @@ export default class Clip extends Component {
                   onChange={this.onChangeDescription}
                 />
               </div>
-
+              <div className="form-group">
+                <label htmlFor="author">Subido por {currentClip.user}</label>
+              </div>
               <div className="form-group">
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Status: </strong>
                 </label>
                 {currentClip.published ? "Published" : "Pending"}
               </div>

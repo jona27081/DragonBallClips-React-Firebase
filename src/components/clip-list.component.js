@@ -38,6 +38,7 @@ export default class ClipsList extends Component {
         title: data.title,
         description: data.description,
         published: data.published,
+        user: data.user,
       });
     });
 
