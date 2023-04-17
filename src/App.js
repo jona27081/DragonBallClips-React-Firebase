@@ -11,6 +11,7 @@ import ClipList from "./components/clip-list.component";
 class App extends Component {
   static contextType = AuthContext;
 
+   
   render() {
     const { isLoggedIn, name, responseFacebook } = this.context;
 
@@ -18,7 +19,7 @@ class App extends Component {
       <div>
         <div>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a href="#" className="navbar-brand">
+            <a href="/clips" className="navbar-brand">
               Dragon Ball Clips
             </a>
             <div className="navbar-nav mr-auto">
